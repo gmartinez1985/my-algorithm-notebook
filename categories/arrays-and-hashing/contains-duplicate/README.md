@@ -32,22 +32,18 @@ Output: false
 
 ---
 
-## 💡 Intuition
+## 🧠 Thought Process
+When I first read the problem, my immediate thought was:
+"How do I check if a value appears more than once without comparing every element to every other?"
 
-We want to detect if there's any **duplicate** value in the array.  
-A good approach is to use a **set** to track which elements we've already seen.
+My instinct was to avoid a brute-force O(n²) solution.
+Then I remembered that a set only stores unique values. That triggered the idea:
+"What if I track what I’ve already seen, and the moment I see a repeat, I return true?"
 
----
+I briefly considered sorting the array and then checking for adjacent duplicates, which would work but takes O(n log n) time.
+However, the set-based approach is more direct and efficient in terms of readability and performance—especially since the problem doesn't require the result to be in any order.
 
-## 🧪 Approach
-
-1. Create an empty set.
-2. Loop through each number in `nums`.
-3. If the number is already in the set → return `true`.
-4. Otherwise, add the number to the set.
-5. If the loop completes, return `false`.
-
----
+That’s how I settled on using a HashSet.
 
 ## ⏱️ Complexity
 
