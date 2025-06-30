@@ -33,17 +33,16 @@ Output: false
 ---
 
 ## 🧠 Thought Process
-When I first read the problem, my immediate thought was:
-"How do I check if a value appears more than once without comparing every element to every other?"
+The goal is to determine whether any value appears more than once in the array.
+A brute-force solution would involve comparing each element with every other, but this leads to O(n²) time complexity, which is inefficient for large inputs.
+![image](https://github.com/user-attachments/assets/00320af4-163f-4457-89ea-569160c2b29d)
 
-My instinct was to avoid a brute-force O(n²) solution.
-Then I remembered that a set only stores unique values. That triggered the idea:
-"What if I track what I’ve already seen, and the moment I see a repeat, I return true?"
+To improve efficiency, it's useful to recognize that a set data structure naturally enforces uniqueness. This insight suggests a more optimal strategy:
+track seen values using a set, and return early if a duplicate is encountered.
 
-I briefly considered sorting the array and then checking for adjacent duplicates, which would work but takes O(n log n) time.
-However, the set-based approach is more direct and efficient in terms of readability and performance—especially since the problem doesn't require the result to be in any order.
+An alternative approach would involve sorting the array first, then scanning linearly to check for adjacent duplicates. While this method works and uses O(1) extra space, it increases the time complexity to O(n log n), which is unnecessary given a more efficient O(n) solution exists with a set.
 
-That’s how I settled on using a HashSet.
+Based on this reasoning, the set-based method provides a clear, efficient, and easy-to-implement solution to the problem.
 
 ## ⏱️ Complexity
 
