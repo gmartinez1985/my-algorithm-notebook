@@ -39,6 +39,7 @@ A brute-force solution would involve comparing each element with every other, bu
 
 To improve efficiency, it's useful to recognize that a set data structure naturally enforces uniqueness. This insight suggests a more optimal strategy:
 track seen values using a set, and return early if a duplicate is encountered.
+![image](https://github.com/user-attachments/assets/de344707-b09a-427d-b3e6-00edaad6f778)
 
 An alternative approach would involve sorting the array first, then scanning linearly to check for adjacent duplicates. While this method works and uses O(1) extra space, it increases the time complexity to O(n log n), which is unnecessary given a more efficient O(n) solution exists with a set.
 
