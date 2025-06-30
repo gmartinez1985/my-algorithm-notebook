@@ -50,25 +50,41 @@ In the case of a non-valid pair of words, the set at the end won't be empty:
 
 ## ⏱️ Complexity
 
-- **Time:** O(s+t) - The algorithm performs a single pass on each word. Each lookup and insertion, and lookup and deletion, in a hash set takes O(1) on average, so the total time is proportional to the number of elements in both words.
-- **Space:** O(n) - In the worst case (no duplicates), every element must be stored in the set, which grows linearly with the input size.
+- **Time:** O(n) - The algorithm performs a single pass on each word.
+- **Space:** O(n) - In the worst case (no duplicates), every letter of the first word must be stored in the set, which grows linearly with the input size.
 
 ---
 
 ## 🔎 Final Pseudocode
 
 ```plaintext
-function containsDuplicate(nums):
-    seen = empty set
+function isAnagram(s, t):
+    create empty map letterCountMap
 
-    for num in nums:
-        if num in seen:
-            return true
-        add num to seen
+    if length of s ≠ length of t:
+        return false
 
-    return false
+    // Count frequency of each character in string s
+    for each character c in s:
+        if c exists in letterCountMap:
+            increment letterCountMap[c] by 1
+        else:
+            set letterCountMap[c] to 1
+
+    // Subtract frequency using characters in string t
+    for each character c in t:
+        if c not in letterCountMap:
+            return false  // more of this character than expected
+        else:
+            decrement letterCountMap[c] by 1
+            if letterCountMap[c] becomes 0:
+                remove c from letterCountMap
+
+    if letterCountMap is empty:
+        return true
+    else:
+        return false
 ```
 
 ## ✅ Final thoughts
-- Very efficient and simple thanks to the properties of HashSet.
-- If memory is a constraint, a sorting + linear scan approach (O(n log n) time, O(1) extra space) could be considered.
+- TBD
