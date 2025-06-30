@@ -47,8 +47,8 @@ Based on this reasoning, the set-based method provides a clear, efficient, and e
 
 ## ⏱️ Complexity
 
-- **Time:** O(n)  
-- **Space:** O(n)
+- **Time:** O(n) - The algorithm performs a single pass through the array of size n. Each lookup and insertion in a hash set takes O(1) on average, so the total time is proportional to the number of elements.
+- **Space:** O(n) - In the worst case (no duplicates), every element must be stored in the set, which grows linearly with the input size.
 
 ---
 
