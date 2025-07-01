@@ -38,7 +38,7 @@ Output: false
 ---
 
 ## 🧠 Thought Process
-This problema can be solved in O(n) time complexity using a hashmap. First it will be processed one of the two words, counting the number of times each letter appears on it:
+This problema can be solved in O(n) time complexity using a hash map. First it will be processed one of the two words, counting the number of times each letter appears on it:
 ![image](https://github.com/user-attachments/assets/af0427de-d088-4366-ab89-48c8324c9651)
 
 After this, the inverse process can be applied with the other word. This means to substract 1 for each letter occurrence on the map. If at the end of this 2nd word processing the map is empty, then both words are anagrams:
@@ -59,7 +59,7 @@ In the case of a non-valid pair of words, the set at the end won't be empty:
 
 ```plaintext
 ALGORITHM isAnagram(s: String, t: String): Boolean
-    letterCountMap <- []
+    letterCountMap <- empty hash map
 
     if length of s ≠ length of t
         return false
@@ -96,4 +96,7 @@ END_ALGORITHM
 ```
 
 ## ✅ Final thoughts
-- TBD
+- This problem is a great example of using a hash map to count character frequencies — a common technique in problems involving anagrams or counting.
+- The solution works in two passes: one to count, and one to subtract, keeping the time complexity at O(n).
+- Learning to remove keys from the map when their count reaches zero is helpful for keeping data structures clean and makes final checks like map.isEmpty() straightforward.
+- This count-and-decrement pattern is widely applicable in other string comparison or frequency-matching problems.
