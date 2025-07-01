@@ -5,9 +5,7 @@ class Solution {
             return false;
         }
 
-        HashMap<Character, Integer> letterCounts = new HashMap<>();
-
-        
+        HashMap<Character, Integer> letterCounts = new HashMap<>();      
 
         // Count letters from the first string
         for (char c : s.toCharArray()) {
@@ -20,7 +18,6 @@ class Solution {
             if (count == null) {
                 return false; // Letter not found in first string
             }
-
             if (count == 1) {
                 letterCounts.remove(c); // Remove when count reaches 0
             } else {
