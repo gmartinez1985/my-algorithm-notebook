@@ -58,32 +58,41 @@ In the case of a non-valid pair of words, the set at the end won't be empty:
 ## 🔎 Final Pseudocode
 
 ```plaintext
-function isAnagram(s, t):
-    create empty map letterCountMap
+ALGORITHM isAnagram(s: String, t: String): Boolean
+    letterCountMap <- []
 
-    if length of s ≠ length of t:
+    if length of s ≠ length of t
         return false
+    endif
 
     // Count frequency of each character in string s
-    for each character c in s:
-        if c exists in letterCountMap:
+    for each character c in s
+        if c exists in letterCountMap
+            letterCountMap[c]++
             increment letterCountMap[c] by 1
-        else:
-            set letterCountMap[c] to 1
+        else
+            letterCountMap <- add({letterCountMap[c]: 1})
+        endif
+    endfor
 
     // Subtract frequency using characters in string t
     for each character c in t:
-        if c not in letterCountMap:
-            return false  // more of this character than expected
-        else:
-            decrement letterCountMap[c] by 1
-            if letterCountMap[c] becomes 0:
-                remove c from letterCountMap
+        if c not in letterCountMap
+            return false 
+        else
+            letterCountMap[c]--
+            if letterCountMap[c] == 0
+                letterCountMap <- remove(c)
+            endif
+        endif
+    endfor
 
-    if letterCountMap is empty:
+    if letterCountMap is empty
         return true
-    else:
+    else
         return false
+    endif
+END_ALGORITHM
 ```
 
 ## ✅ Final thoughts
