@@ -1,30 +1,34 @@
 class Solution {
     public boolean isAnagram(String s, String t) {
-        HashMap<Character, Integer> letterCountMap = new HashMap<>();
-
         // If the length of both words is different, they can't be anagrams
         if(s.length() != t.length()) {
             return false;
         }
 
-        // Fill the hash map with the letter frequency of the 1st word
-        for(int i=0; i<s.length(); i++) {            
-            letterCountMap.compute(s.charAt(i), (k, v) -> v == null ? 1 : v + 1);
+        HashMap<Character, Integer> letterCounts = new HashMap<>();
+
+        
+
+        // Count letters from the first string
+        for (char c : s.toCharArray()) {
+            letterCounts.put(c, letterCounts.getOrDefault(c, 0) + 1);
         }
 
-        // For each letter of the second word, decrease its frequency from the hash map
-        for(int i=0; i<t.length(); i++) {                        
-            letterCountMap.compute(t.charAt(i), (k, v) -> {
-                if (v == null) return null;
-                int nuevoValor = v - 1;
-                return nuevoValor == 0 ? null : nuevoValor;
-            });
+        // Subtract counts using letters from the second string
+        for (char c : t.toCharArray()) {
+            Integer count = letterCounts.get(c);
+            if (count == null) {
+                return false; // Letter not found in first string
+            }
+
+            if (count == 1) {
+                letterCounts.remove(c); // Remove when count reaches 0
+            } else {
+                letterCounts.put(c, count - 1);
+            }
         }
 
-        // If the hash map is empty, then both word have the same frequency for all their letters
-        if(letterCountMap.isEmpty()) {
-            return true;
-        }
-        return false;
+        // If all counts canceled out, the map should be empty
+        return letterCounts.isEmpty();
     }
 }
