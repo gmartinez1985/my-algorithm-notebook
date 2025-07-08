@@ -62,6 +62,8 @@ To improve efficiency, the idea is to use a constant-time access data structure 
 
 This way, as we iterate through the array, we can calculate the number that would complement the current one to reach the target. Knowing this required number, we can check the auxiliary hash map to see if it exists—and if it does, retrieve its index.
 
+However, it is important to validate that the index of the complement number is different from the current index, to ensure we do not pair the element with itself.
+
 ![image](https://github.com/user-attachments/assets/c40a136c-20fa-4eda-9676-5c70123c0a23)
 
 ## ⏱️ Complexity
@@ -88,7 +90,7 @@ ALGORITHM twoSum(nums: Integer[], target: Integer): Integer[]
   complement ← target - num
   position_of_complement ← numberExists.get(complement)
 
-  if position_of_complement ≠ null
+  if position_of_complement ≠ null AND position_of_complement ≠ i
    result[0] ← i
    result[1] ← position_of_complement
    break the loop
