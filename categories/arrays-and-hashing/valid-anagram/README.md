@@ -1,4 +1,4 @@
-# Contains Duplicate
+# Valid anagram
 
 **Platform:** [NeetCode](https://neetcode.io/problems/is-anagram?list=blind75)
 
